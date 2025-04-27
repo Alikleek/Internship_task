@@ -1,14 +1,10 @@
 #!/bin/bash
 
-if [ "$1" == "--help" ]; then
+if [ "$#" -lt 2 ] | [ "$1" == "--help" ]; then
   echo -e "Mygrep bash script\nUsage: $0 [-i] [-v] search_string filename\n[options]\n[-n] print line number\n[-v] print the inverse of the search\nyou can use any combination of options"
   exit 1
 fi
 
-if [ "$#" -lt 2 ]; then
-  echo "Usage: $0 [option] search_string filename"
-  exit 1
-fi
 
 
 line_p=false
