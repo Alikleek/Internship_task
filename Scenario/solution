@@ -1,0 +1,15 @@
+for the server of internal.example.com we check for the ip of the server from /etc/resolve.conf
+after using the nslookup command to search dns 8.8.8.8 it is found that the ip of the server exists, meaning the ip is valid on the global dns 
+we use $curl http://127.0.0.53 to check port 80, if it outputs then it's open 
+we use $curl https://127.0.0.53 to check port 443, if it outputs then it's open
+
+Possible issue:
+1-the firewall might be blocking access
+2-the dns might have a syntax error on the name 
+3-local host file might have wrong ip 
+
+Possible solutions:
+1- add the ports 80 and 443 to the firewall allow list using $sudo ufw allow 80,443/tcp
+2-  change hostname of server to match the dns 
+3- create file /etc/hosts to have the current hostname and ip to override bad dns name
+4- use resolvectl to add the server $resolvectl set-dns eth0 8.8.8.8 
